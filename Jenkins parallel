@@ -9,20 +9,22 @@ pipeline {
             }
         }
 
-        stage ('TEST PARALLELE') {
-            stage ('TEST') {
+        stage ('TEST PARALLEL') {
+            parallel {
+              stage ('TEST') {
                 steps {
-                    echo "This is test stage"
-                    sh 'sleep 5'
+                  echo "This is test stage"
+                  sh 'sleep 5'
                 }
             }
 
-            stage ('DEPLOY') {
+              stage ('DEPLOY') {
                 steps {
-                    echo "This is deploy stage"
-                    sh 'sleep 5'
+                  echo "This is deploy stage"
+                  sh 'sleep 5'
                 }
             }
         }
     }
+ }
 }
