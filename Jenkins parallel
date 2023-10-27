@@ -13,20 +13,26 @@ pipeline {
 
         stage ('TEST PARALLEL') {
             parallel {
-              stage ('TEST') {
+              stage ('TEST ON CHROME') {
                 steps {
-                  echo "This is test stage"
+                  echo "This is testing in chrome stage"
                   sh 'sleep 5'
                 }
             }
 
-              stage ('DEPLOY') {
+              stage ('TEST ON FIREFOX') {
                 steps {
-                  echo "This is deploy stage"
+                  echo "This is testing in firefox stage"
                   sh 'sleep 5'
                 }
             }
         }
     }
+stage ('DEPLOY') {
+  steps {
+    echo "This is deploy stage"
+    sh 'sleep 5'
  }
+}
+}
 }
